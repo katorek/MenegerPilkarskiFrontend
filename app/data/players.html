@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+<head>
+    <link rel="stylesheet" type="text/css" href="tableStyle.css">
+</head>
+
+<body>
+
+<a href="../index.html">Strona glowna</a>
+
+
+<div ng-app="playerApp" ng-controller="playerCtrl">
+    <p>Id: <input type="number" ng-model="playerId" ng-change="getPlayerById(playerId)">0</p>
+    <p>Pilkarz: {{ info(pilkarz)}}</p>
+
+    <p>Pilkarze: </p>
+    <ul>
+        <li ng-repeat="x in players | orderBy:'id'">
+            {{ x.imie +' '+x.nazwisko}}
+        </li>
+    </ul>
+</div>
+
+
+<script src="controllers/players.js"></script>
+
+</body>
+</html>
