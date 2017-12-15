@@ -1,57 +1,22 @@
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
-<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
-
-<!---->
-<script src="/libs/ui-grid.js"></script>
-<script src="/libs/ui-grid.css"></script>
-<!---->
-<script src="controllers/teams.js"></script>
-<link rel="stylesheet" type="text/css" href="tableStyle.css">
+<head>
+    <script src="../app.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="../../libs/ui-grid.css">-->
+</head>
 <body>
+<div ng-app="myApp">
+    <div ng-controller="teamCtrl">
+        <div  ng-if="!refresh" ui-grid="teamGrid" ui-grid-edit class="grid" ui-grid-auto-resize></div>
+        <div><br />
+            <form novalidate class="simple-form">
+                <label>Id: {{maxId()}}</label>
+                <label>Nazwa: <input type="text" ng-model="team.nazwa"/></label>
+                <input type="submit" ng-click="add(team);refreshGrid()" value="Dodaj"/>
+            </form>
 
-<h1>
-    <a href="../index.html">Strona glowna</a>
-</h1>
-
-<div ng-app="teamApp" ng-controller="teamCtrl">
-    <form name="EditPlayer">
-        <table>
-            <tr>
-                <td>
-                    <!--<input type="text" value="{{oneTeam.nazwa}}" ng-model="oneTeam.nazwa">-->
-                    <input type="text" ng-model="newTeam.nazwa">
-                </td>
-                <td>
-                    <button ng-click="updateTeam()">Save</button>
-                </td>
-            </tr>
-        </table>
-        <!--<p>{{teamInfo(oneTeam)}}</p>-->
-    </form>
-    <p>Druzyny: </p>
-
-    <table ng-table="tableTeams" class="table table-condensed table-bordered table-striped">
-        <tr ng-repeat="row in $data" ng-click="setCustomTeam(row)">
-            <td data-title="'Id'" sortable="'id'">{{row.id}}</td>
-            <td data-title="'Nazwa'" sortable="'nazwa'">{{row.nazwa}}</td>
-            <td>
-                <button ng-click='alert(row)'>Delete</button>
-            </td>
-        </tr>
-        <tr ng-click="">
-            <td></td>
-            <td><input type="text" ng-model="newTeamName"></td>
-            <td><button ng-click="newTeam(newTeamName)">Click to add new entry</button></td>
-        </tr>
-    </table>
-    <p>Length: {{allTeams.length}} </p>
-    <p>TeamId: {{teamId}}</p>
-
-
+        </div>
+    </div>
 </div>
 
 

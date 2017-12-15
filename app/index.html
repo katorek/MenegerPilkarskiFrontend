@@ -1,28 +1,51 @@
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
-<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-touch.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/lodash.min.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/jszip.min.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/excel-builder.dist.js"></script>
+
+    <!---->
+    <script src="../libs/ui-grid.js"></script>
+    <link rel="stylesheet" type="text/css" href="../libs/ui-grid.css">
+    <!--<script src="../libs/ui-grid.css"></script>-->
+    <!---->
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="data/style.css">
+</head>
+
 <body>
 <h1>
     Witaj w managerze pilkarskim!<br>
-    Kliknij podstrone by przejsc dalej!
 </h1>
 
-<ul>
-    <li>
-        <h3>
-            <a href="data/teams.html">Druzyny</a><br>
-        </h3>
-    </li>
-    <li>
-        <h3>
-            <a href="data/players.html">Pilkarze</a>
-        </h3>
-    </li>
-</ul>
+<div ng-app="myApp">
+    <div ng-controller="indexCtrl">
+        <ul>
+            <li>
+                <a href="#" ng-click="updateView('data/teams.html')">Druzyny</a>
+            </li>
+            <li>
+                <a href="#" ng-click="updateView('data/players.html')">Zawodnicy</a>
+            </li>
+            <li>
+                <a href="#" ng-click="updateView('data/empty.html')" ng-hide="true">Empty page</a>
+            </li>
+        </ul>
+        <div id="subPageView" ng-include="view"></div>
+    </div>
+</div>
 
 
 </body>
+
 </html>

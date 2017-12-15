@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
 <head>
-    <link rel="stylesheet" type="text/css" href="tableStyle.css">
+    <script src="../app.js"></script>
 </head>
+
 
 <body>
 
-<a href="../index.html">Strona glowna</a>
 
+<div ng-app="myApp">
+    <div ng-controller="playerCtrl">
+        <div  ui-grid="grid" ui-grid-edit class="grid" ui-grid-auto-resize></div>
+        <div><br />
+            <form novalidate class="simple-form">
+                <label>Id: {{maxId()}}</label>
+                <label>Imie: <input type="text" ng-model="player.imie"/></label>
+                <label>Nazwisko: <input type="text" ng-model="player.nazwisko"/></label>
+                <label>Pesel: <input type="text" ng-model="player.pesel"/></label>
+                <input type="submit" ng-click="add(player)" value="Dodaj"/>
+            </form>
 
-<div ng-app="playerApp" ng-controller="playerCtrl">
-    <p>Id: <input type="number" ng-model="playerId" ng-change="getPlayerById(playerId)">0</p>
-    <p>Pilkarz: {{ info(pilkarz)}}</p>
-
-    <p>Pilkarze: </p>
-    <ul>
-        <li ng-repeat="x in players | orderBy:'id'">
-            {{ x.imie +' '+x.nazwisko}}
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>
 
-
-<script src="controllers/players.js"></script>
 
 </body>
 </html>
