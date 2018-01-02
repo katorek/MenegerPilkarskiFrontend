@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
+  <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="angular" level="application" />
@@ -16,5 +15,17 @@
     <orderEntry type="library" name="angular-touch" level="application" />
     <orderEntry type="library" name="angular-animate" level="application" />
     <orderEntry type="library" name="angular-route" level="application" />
+    <orderEntry type="library" name="angular" level="application" />
+    <orderEntry type="library" name="angular-resource" level="application" />
+    <orderEntry type="library" name="angular-touch" level="application" />
+    <orderEntry type="library" name="angular-animate" level="application" />
+    <orderEntry type="library" name="csv" level="application" />
+    <orderEntry type="library" name="angular-route" level="application" />
+    <orderEntry type="library" name="pdfmake" level="application" />
+    <orderEntry type="library" name="lodash" level="application" />
+    <orderEntry type="library" name="jszip" level="application" />
+    <orderEntry type="library" name="excel-builder.dist" level="application" />
+    <orderEntry type="library" name="vfs_fonts" level="application" />
+    <orderEntry type="library" name="angular-messages" level="application" />
   </component>
 </module>

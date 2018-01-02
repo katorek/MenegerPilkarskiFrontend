@@ -2,20 +2,27 @@
 <html>
 <head>
     <script src="../app.js"></script>
-    <!--<link rel="stylesheet" type="text/css" href="../../libs/ui-grid.css">-->
 </head>
 <body>
 <div ng-app="myApp">
     <div ng-controller="teamCtrl">
-        <div  ng-if="!refresh" ui-grid="teamGrid" ui-grid-edit class="grid" ui-grid-auto-resize></div>
-        <div><br />
-            <form novalidate class="simple-form">
-                <label>Id: {{maxId()}}</label>
-                <label>Nazwa: <input type="text" ng-model="team.nazwa"/></label>
-                <input type="submit" ng-click="add(team);refreshGrid()" value="Dodaj"/>
-            </form>
 
+        <div>
+            <form novalidate class="simple-form">
+                <input type="text" ng-model="entry.nazwa" placeholder="Nazwa"/>
+                <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+            </form>
         </div>
+
+        <div ng-hide="!showEdit" ng-show="showEdit">
+            <form novalidate class="simple-form">
+                <label>Nazwa: <input type="text" ng-model="edited.nazwa"></label>
+                <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+            </form>
+        </div>
+
+        <br/>
+        <div ui-grid="grid" ui-grid-edit class="grid"></div>
     </div>
 </div>
 

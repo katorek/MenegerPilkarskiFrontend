@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="../app.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="../data/style.css">-->
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="sponsorCtrl">
+        <div>
+            <form novalidate class="simple-form">
+                <p>Dodawanie nowego sponsora</p><br/>
+                <input type="text" ng-model="entry.nazwa" placeholder="Nazwa"/><br/>
+                <input type="text" ng-model="entry.rodzaj" placeholder="Rodzaj"/><br/>
+                <label>Druzyna:
+                    <select ng-model="entry.druzyna">
+                        <option ng-repeat="option in druzyny" value="{{option.id}}">{{option.nazwa}}</option>
+                    </select>
+                </label><br/>
+                <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+            </form>
+        </div>
+        <br/>
+        <div ng-hide="!showEdit" ng-show="showEdit">
+            <form novalidate class="simple-form">
+                <p>Edytowanie sponsora</p><br/>
+                <label>Imie: <input type="text" ng-model="edited.nazwa" placeholder=""/></label><br/>
+                <label>Nazwisko: <input type="text" ng-model="edited.rodzaj"/></label><br/>
+                <label>
+                    Druzyna:
+                    <select ng-options="item.nazwa for item in druzyny" ng-model="druzyny.selected"></select>
+                </label><br/>
+                <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+            </form>
+        </div>
+        <br/>
+        <br/>
+        <div ui-grid="grid" ui-grid-edit class="grid"></div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

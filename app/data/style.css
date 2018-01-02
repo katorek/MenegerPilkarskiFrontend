@@ -6,3 +6,9 @@
     height: 100%;
     border-style: inset;
 }
+#spoiler{
+    display: none;
+}
+.simple-form{
+    border-style: inset;
+}

@@ -2,11 +2,14 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-touch.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
@@ -20,6 +23,9 @@
     <!--<script src="../libs/ui-grid.css"></script>-->
     <!---->
     <script src="app.js"></script>
+    <script src="factories.js"></script>
+    <script src="controllers.js"></script>
+    <script src="services.js"></script>
     <link rel="stylesheet" type="text/css" href="data/style.css">
 </head>
 
@@ -28,17 +34,12 @@
     Witaj w managerze pilkarskim!<br>
 </h1>
 
+
 <div ng-app="myApp">
     <div ng-controller="indexCtrl">
         <ul>
-            <li>
-                <a href="#" ng-click="updateView('data/teams.html')">Druzyny</a>
-            </li>
-            <li>
-                <a href="#" ng-click="updateView('data/players.html')">Zawodnicy</a>
-            </li>
-            <li>
-                <a href="#" ng-click="updateView('data/empty.html')" ng-hide="true">Empty page</a>
+            <li ng-repeat="x in strony">
+                <a href="#" ng-click="updateView(x.url)" ng-hide="x.hidden">{{x.name}}</a>
             </li>
         </ul>
         <div id="subPageView" ng-include="view"></div>

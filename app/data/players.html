@@ -1,26 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <script src="../app.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="../data/style.css">-->
 </head>
-
-
 <body>
-
-
 <div ng-app="myApp">
     <div ng-controller="playerCtrl">
-        <div  ui-grid="grid" ui-grid-edit class="grid" ui-grid-auto-resize></div>
-        <div><br />
+
+        <div>
             <form novalidate class="simple-form">
-                <label>Id: {{maxId()}}</label>
-                <label>Imie: <input type="text" ng-model="player.imie"/></label>
-                <label>Nazwisko: <input type="text" ng-model="player.nazwisko"/></label>
-                <label>Pesel: <input type="text" ng-model="player.pesel"/></label>
-                <input type="submit" ng-click="add(player)" value="Dodaj"/>
+                <p>Dodawanie nowego zawodnika</p><br/>
+                <!--<label>Id: {{maxId()}}</label><br/>-->
+                <input type="text" ng-model="entry.imie" placeholder="Imię"/><br/>
+                <input type="text" ng-model="entry.nazwisko" placeholder="Nazwisko"/><br/>
+                <input type="text" ng-model="entry.pesel" placeholder="Pesel"/><br/>
+                <input type="text" ng-model="entry.numer" placeholder="Numer"/><br/>
+                <!--<input type="text" ng-model="entry.pozycja" placeholder="Pozycja"/><br/>-->
+
+                <label>Pozycja:
+                    <select ng-model="entry.pozycja">
+                        <option ng-repeat="option in pozycje.lista" value="{{option.id}}">{{option.nazwa}}</option>
+                    </select>
+                </label><br/>
+
+                <label>Druzyna:
+                    <select ng-model="entry.druzyna">
+                        <option ng-repeat="option in druzyny" value="{{option.id}}">{{option.nazwa}}</option>
+                    </select>
+                </label><br/>
+
+                <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+            </form>
+        </div>
+        <br/>
+        <div ng-hide="!showEdit" ng-show="showEdit">
+            <form novalidate class="simple-form">
+                <p>Edytowanie zawodnika</p><br/>
+                <!--<label>Id: {{maxId()}}</label><br/>-->
+                <label>Imie: <input type="text" ng-model="edited.imie" placeholder=""/></label><br/>
+                <label>Nazwisko: <input type="text" ng-model="edited.nazwisko"/></label><br/>
+                <label>Pesel: <input type="text" ng-model="edited.pesel"/></label><br/>
+                <label>Numer: <input type="number" ng-model="edited.numer"/></label><br/>
+
+                <label>Pozycja:
+                    <select ng-model="edited.pozycja">
+                        <option ng-repeat="option in pozycje.lista" value="{{option.id}}">{{option.nazwa}}</option>
+                    </select>
+                </label><br/>
+
+                <!--<label>Pozycja:-->
+                <!--<select ng-options="item.nazwa for item in pozycje.lista" ng-model="pozycja.selepozycja"></select>-->
+                <!--<option ng-repeat="option in pozycje.lista" value="{{option.id}}">{{option.nazwa}}</option>-->
+                <!--</select>-->
+                <!--</label><br/>-->
+
+
+                <!--<label for="druzynaPlayerSelect">Druzyna:-->
+                <!--<select name="druzynaPlayerSelect" id="druzynaPlayerSelect" ng-model="edited.druzyna">-->
+                <!--<option ng-repeat="option in druzyny" value="{{option.id}}">{{option.nazwa}}</option>-->
+                <!--</select>-->
+                <!--</label> <br/>-->
+
+                <label>
+                    Druzyna:
+                    <select ng-options="item.nazwa for item in druzyny" ng-model="druzyny.selected"></select>
+                </label><br/>
+
+
+                <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
             </form>
 
         </div>
+        <br/>
+        <br/>
+        <div ui-grid="grid" ui-grid-edit class="grid"></div>
     </div>
 </div>
 

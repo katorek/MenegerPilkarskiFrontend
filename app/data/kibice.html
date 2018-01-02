@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../app.js"></script>
+    <meta charset="utf-8">
+    <!--<link rel="stylesheet" type="text/css" href="../data/style.css">-->
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="kibicCtrl">
+
+        <div>
+            <form novalidate class="simple-form">
+                <p>Dodawanie nowego kibica</p><br/>
+                <!--<label>Id: {{maxId()}}</label><br/>-->
+                <input type="text" ng-model="entry.imie" placeholder="Imię"/><br/>
+                <input type="text" ng-model="entry.nazwisko" placeholder="Nazwisko"/><br/>
+                <input type="text" ng-model="entry.pesel" placeholder="Pesel"/><br/>
+                <label>
+                    Znizka <input type="checkbox" ng-model="entry.znizka" placeholder="Znizka"/>
+
+                </label><br/>
+
+                <input type="submit" ng-click="add(entry)" value="Dodaj"/>
+            </form>
+        </div>
+        <br/>
+        <div ng-hide="!showEdit" ng-show="showEdit">
+            <form novalidate class="simple-form">
+                <p>Edytowanie zawodnika</p><br/>
+                <!--<label>Id: {{maxId()}}</label><br/>-->
+                <label>Imie: <input type="text" ng-model="edited.imie" placeholder=""/></label><br/>
+                <label>Nazwisko: <input type="text" ng-model="edited.nazwisko"/></label><br/>
+                <label>Pesel: <input type="text" ng-model="edited.pesel"/></label><br/>
+                <label>Znizka <input type="checkbox" ng-model="edited.znizka"/></label>
+
+                <input type="submit" ng-click="update(edited)" value="Zaktualizuj"/> <a ng-click="showEdit=false">&#10006;</a>
+            </form>
+        </div>
+        <br/>
+        <br/>
+        <div ui-grid="grid" ui-grid-edit class="grid"></div>
+    </div>
+</div>
+
+
+</body>
+</html>
